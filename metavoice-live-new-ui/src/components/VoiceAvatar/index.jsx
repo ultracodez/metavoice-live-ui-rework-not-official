@@ -8,7 +8,13 @@ export default function VoiceAvatar({ img: { alt, src }, name, isActive }) {
       >
         <img className="object-contain rounded-full" src={src} alt={alt} />
       </div>
-      <div className="mt-2 flex justify-center text-3xl text-white">{name}</div>
+      <div
+        className={`mt-2 flex justify-center text-3xl text-white ${
+          isActive && "font-semibold"
+        }`}
+      >
+        {name}
+      </div>
     </div>
   );
 }

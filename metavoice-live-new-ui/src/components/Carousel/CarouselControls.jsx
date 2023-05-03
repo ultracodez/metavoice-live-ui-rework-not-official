@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import React from "react";
+import { CaretForwardOutline, CaretBackOutline } from "react-ionicons";
 
 const CarouselControlsL = (props) => {
   return (
@@ -11,10 +12,10 @@ const CarouselControlsL = (props) => {
       }}
       disabled={!props.canScrollPrev}
       className={classNames({
-        "text-white": true,
+        "text-white px-2": true,
       })}
     >
-      &lt;
+      <CaretBackOutline color={"white  "} />
     </button>
   );
 };
@@ -29,10 +30,10 @@ const CarouselControlsR = (props) => {
       }}
       disabled={!props.canScrollNext}
       className={classNames({
-        "text-white": true,
+        "text-white px-2": true,
       })}
     >
-      &gt;
+      <CaretForwardOutline color={"white  "} />
     </button>
   );
 };

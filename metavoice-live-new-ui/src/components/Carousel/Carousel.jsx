@@ -56,7 +56,9 @@ const Carousel = ({ voices, className, ...options }) => {
           onPrev={() => emblaApi?.scrollPrev()}
         />
       </div>
-      <Dots itemsLength={length} selectedIndex={selectedIndex} />
+      {
+        //<Dots itemsLength={length} selectedIndex={selectedIndex} />
+      }
     </div>
   );
 };
