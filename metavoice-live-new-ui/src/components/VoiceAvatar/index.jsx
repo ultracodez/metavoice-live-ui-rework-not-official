@@ -1,6 +1,17 @@
-export default function VoiceAvatar({ img: { alt, src }, name, isActive }) {
+export default function VoiceAvatar({
+  img: { alt, src },
+  name,
+  isActive,
+  onClick,
+  index,
+}) {
   return (
-    <div className="p-4 justify-center">
+    <div
+      onClick={() => {
+        onClick(index);
+      }}
+      className="p-4 justify-center"
+    >
       <div
         className={`border-4 transition ease-in-out delay-300 h-48 w-48 rounded-full relative ${
           isActive ? "border-sky-500" : "border-transparent"

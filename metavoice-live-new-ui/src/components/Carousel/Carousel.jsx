@@ -31,6 +31,11 @@ const Carousel = ({ voices, className, ...options }) => {
   const length = voices.length;
   const canScrollNext = !!emblaApi?.canScrollNext();
   const canScrollPrev = !!emblaApi?.canScrollPrev();
+
+  const handleVaClick = (index) => {
+    emblaApi.scrollTo(index);
+  };
+
   return (
     <div className={`relative`}>
       <div className="flex">
@@ -44,7 +49,12 @@ const Carousel = ({ voices, className, ...options }) => {
           <div className="flex">
             {voices.map((voice, index) => {
               return (
-                <VoiceAvatar isActive={index === selectedIndex} {...voice} />
+                <VoiceAvatar
+                  isActive={index === selectedIndex}
+                  index={index}
+                  onClick={handleVaClick}
+                  {...voice}
+                />
               );
             })}
           </div>
