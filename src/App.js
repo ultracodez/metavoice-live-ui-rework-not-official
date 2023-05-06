@@ -9,7 +9,7 @@ import {
   MicOutline,
   VolumeHighOutline,
 } from "react-ionicons";
-import { Disclosure } from "@headlessui/react";
+import { Disclosure, Transition } from "@headlessui/react";
 import Settings from "./components/Nav/Settings";
 
 function App() {
@@ -110,18 +110,29 @@ function App() {
                         } transition duration-300 h-5 w-5 text-purple-500`}
                       />
                     </Disclosure.Button>
-                    <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-white">
-                      &lt;MVL Sample, DO NOT REPLICATE&gt;
-                      <br /> Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elit, sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua. Ut enim ad minim veniam, quis nostrud
-                      exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat. Duis aute irure dolor in reprehenderit in
-                      voluptate velit esse cillum dolore eu fugiat nulla
-                      pariatur. Excepteur sint occaecat cupidatat non proident,
-                      sunt in culpa qui officia deserunt mollit anim id est
-                      laborum.
-                    </Disclosure.Panel>
+                    <Transition
+                      show={open}
+                      className="overflow-hidden"
+                      enter="transition transition-[max-height] duration-200 ease-in"
+                      enterFrom="transform max-h-0"
+                      enterTo="transform max-h-screen"
+                      leave="transition transition-[max-height] duration-400 ease-out"
+                      leaveFrom="transform max-h-screen"
+                      leaveTo="transform max-h-0"
+                    >
+                      <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-white">
+                        &lt;MVL Sample, DO NOT REPLICATE&gt;
+                        <br /> Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip ex ea commodo consequat. Duis aute irure dolor
+                        in reprehenderit in voluptate velit esse cillum dolore
+                        eu fugiat nulla pariatur. Excepteur sint occaecat
+                        cupidatat non proident, sunt in culpa qui officia
+                        deserunt mollit anim id est laborum.
+                      </Disclosure.Panel>
+                    </Transition>
                   </>
                 )}
               </Disclosure>
