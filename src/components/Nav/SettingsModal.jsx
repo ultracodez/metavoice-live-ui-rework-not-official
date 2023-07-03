@@ -1,9 +1,12 @@
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { WarningOutline } from "react-ionicons";
+import { Slider } from "@material-tailwind/react";
 
 export default function SettingsModal({ open, setOpen }) {
   const cancelButtonRef = useRef(null);
+
+  const [noiseSuppression, setNoiseSuppression] = useState(20);
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -37,25 +40,95 @@ export default function SettingsModal({ open, setOpen }) {
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-slate-700 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                <div className="bg-slate-700 px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                  <div className="sm:flex sm:items-start">
-                    <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                <div className="bg-slate-700 px-8 py-4">
+                  <div className="">
+                    <div className="  mt-1 text-center  sm:text-left">
                       <Dialog.Title
                         as="h3"
                         className="text-base font-semibold leading-6 text-white"
                       >
                         Settings
                       </Dialog.Title>
-                      <div className="mt-2">
+                      <div className="mt-4">
                         <p className="text-sm text-white">
-                          Are you sure you want to deactivate your account? All
-                          of your data will be permanently removed. This action
-                          cannot be undone.
+                          <div className="flex">
+                            <div className=" w-full flex items-center text-white">
+                              Session Recording{" "}
+                            </div>
+                            <div className="flex items-end justify-end">
+                              <label
+                                for="toggleB"
+                                className="flex items-center cursor-pointer"
+                              >
+                                <div className="relative">
+                                  <input
+                                    type="checkbox"
+                                    id="toggleB"
+                                    className="peer sr-only"
+                                  />
+
+                                  <div className="peer-checked:translate-x-full dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
+                                  <div className="block bg-gray-600 transition peer-checked:bg-green-500 w-14 h-8 rounded-full"></div>
+                                </div>
+                              </label>
+                            </div>
+                          </div>
+                        </p>
+                      </div>
+                      <div className="mt-4 flex justify-between items-center">
+                        <label
+                          className="text-sm text-white
+                          "
+                          for="noise-suppression"
+                        >
+                          Noise Suppression
+                        </label>
+                        <div className="pl-8">
+                          <Slider
+                            defaultValue={20}
+                            color="red"
+                            value={noiseSuppression}
+                            onChange={(e) => {
+                              setNoiseSuppression(e.target.value);
+                            }}
+                            min={0}
+                            max={100}
+                            step={20}
+                            data-tip={"number"}
+                            trackClassName="[&::-webkit-slider-runnable-track]:bg-transparent [&::-moz-range-track]:bg-transparent rounded-full !bg-slate-600"
+                          />
+                        </div>
+                      </div>
+                      <div className="mt-4">
+                        <p className="text-sm text-white">
+                          <div className="flex ">
+                            <div className=" w-full flex items-center text-white">
+                              Opt-in to sharing data{" "}
+                            </div>
+                            <div className="flex items-end justify-end w-full">
+                              <label
+                                for="toggleC"
+                                className="flex items-center cursor-pointer"
+                              >
+                                <div className="relative">
+                                  <input
+                                    type="checkbox"
+                                    id="toggleC"
+                                    className="peer sr-only"
+                                  />
+
+                                  <div className="peer-checked:translate-x-full dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
+                                  <div className="block bg-gray-600 transition peer-checked:bg-green-500 w-14 h-8 rounded-full"></div>
+                                </div>
+                              </label>
+                            </div>
+                          </div>
                         </p>
                       </div>
                     </div>
                   </div>
                 </div>
+
                 <div className=" px-4 py-3 gap-1 sm:flex sm:flex-row-reverse sm:px-6">
                   <button
                     type="button"

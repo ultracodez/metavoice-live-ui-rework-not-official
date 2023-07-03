@@ -95,6 +95,7 @@ function App() {
             </div>
           </div>
         </div>
+
         <div className="mt-12">
           <div className="w-full ">
             <div className="mx-auto w-full max-w-md rounded-2xl bg-slate-700 border border-gray-600 p-2">
